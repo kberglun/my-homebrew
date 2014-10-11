@@ -1,8 +1,6 @@
 package com.kbit.utilities.log;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import com.kbit.domain.types.KFile;
@@ -10,38 +8,45 @@ import com.kbit.domain.types.KFile;
 public class Log {
 
 	private static final List<LogEntry> entries=new ArrayList<LogEntry>();
+	private static boolean print=true;
 	
+	private static void addEntry(final LogEntry entry){
+		entries.add(entry);
+		if (print) {
+			System.err.println(entry);
+		}
+	}
 	
 	public synchronized static void addEntry(final LogType type, final Exception exception){
-		entries.add(new LogEntry(type, exception));
+		addEntry(new LogEntry(type, exception));
 	}
 	
 	public synchronized static void addEntry(final LogType type, final String message){
-		entries.add(new LogEntry(type, message));
+		addEntry(new LogEntry(type, message));
 	}
 	
 	public synchronized static void debug(final String message){
-		entries.add(new LogEntry(LogType.Debug, message));
+		addEntry(new LogEntry(LogType.Debug, message));
 	}
 	
 	/*
 	public synchronized static void debug(final Exception exeption){
-		entries.add(new LogEntry(LogType.Debug, exeption));
+		addEntry(new LogEntry(LogType.Debug, exeption));
 	}
 	*/
 
 	public synchronized static void info(final String message){
-		entries.add(new LogEntry(LogType.Info, message));
+		addEntry(new LogEntry(LogType.Info, message));
 	}
 	
 	/*
 	public synchronized static void info(final Exception exeption){
-		entries.add(new LogEntry(LogType.Info, exeption));
+		addEntry(new LogEntry(LogType.Info, exeption));
 	}
 	*/
 	
 	public synchronized static void warning(final String message){
-		entries.add(new LogEntry(LogType.Warning, message));
+		addEntry(new LogEntry(LogType.Warning, message));
 	}
 	
 	/*
@@ -51,11 +56,11 @@ public class Log {
 	*/
 	
 	public synchronized static void exeption(final String message){
-		entries.add(new LogEntry(LogType.Error, message));
+		addEntry(new LogEntry(LogType.Error, message));
 	}
 	
 	public synchronized static void exeption(final Exception exeption){
-		entries.add(new LogEntry(LogType.Error, exeption));
+		addEntry(new LogEntry(LogType.Error, exeption));
 	}
 	
 	public synchronized static void print(){

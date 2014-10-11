@@ -21,6 +21,23 @@ public class KFile extends AbstractKObject<File> {
 			return value.exists();
 		}
 	}
+	
+	public boolean isFile(){
+		return value==null?false:value.isFile();
+	}
+	
+	public boolean isDirectory(){
+		return value==null?false:value.isDirectory();
+	}
+	
+	public String getPath(){
+		return value==null?"":value.getPath();
+	}
+	
 
+	@Override
+	public String toString() {
+		return getPath();
+	}
 	
 }

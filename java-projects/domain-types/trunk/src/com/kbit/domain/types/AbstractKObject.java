@@ -1,6 +1,5 @@
 package com.kbit.domain.types;
 
-import java.io.Serializable;
 
 public abstract class AbstractKObject<T extends Comparable<T>> {
 
@@ -21,7 +20,7 @@ public abstract class AbstractKObject<T extends Comparable<T>> {
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " value:'" + value.toString() + "'"; 
+		return value.toString(); 
 	}
 	
 	
