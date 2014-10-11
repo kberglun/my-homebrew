@@ -1,6 +1,8 @@
 package com.kbit.domain.types;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class KFile extends AbstractKObject<File> {
 
@@ -34,6 +36,19 @@ public class KFile extends AbstractKObject<File> {
 		return value==null?"":value.getPath();
 	}
 	
+	public Collection<KFile> getFilesInDirectory(){
+		Collection<KFile> collection=new ArrayList<KFile>();
+		
+		if (value!=null && isDirectory()) {
+			for (final File file:value.listFiles()) {
+				KFile newFile=new KFile();
+				newFile.setValue(file);
+				collection.add(newFile);
+			}
+		}
+		
+		return collection;
+	}
 
 	@Override
 	public String toString() {
