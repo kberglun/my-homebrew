@@ -1,11 +1,14 @@
 package com.kbit.domain.types;
 
 import java.io.File;
+import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class KFile extends AbstractKObject<File> {
 
+	public static final String DIR_SEPARATOR=FileSystems.getDefault().getSeparator();
+	
 	@Override
 	public AbstractKObject<File> setValue(File value) {
 		return super.setValue(value);

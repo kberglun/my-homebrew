@@ -1,16 +1,24 @@
 package com.kbit.utilities.testMain;
 
+import com.kbit.domain.exception.file.FileException;
+import com.kbit.domain.types.KFile;
+import com.kbit.utilities.filewatcher.FileAddWatcher;
+
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Run run=new Run();
+		KFile file=new KFile();
+		file.setValue("C:\\Temp\\Test");
 		
-		Thread thread=new Thread(run);
-		
-		thread.start();
-		
+		try {
+			FileAddWatcher watcher=new FileAddWatcher(file,null);
+			watcher.start();
+			
+		} catch (FileException e1) {
+			e1.printStackTrace();
+		}
 		
 
 	}
