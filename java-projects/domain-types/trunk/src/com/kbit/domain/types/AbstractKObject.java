@@ -20,8 +20,11 @@ public abstract class AbstractKObject<T extends Comparable<T>> {
 
 	@Override
 	public String toString() {
-		return value.toString(); 
+		return value==null?"":value.toString(); 
 	}
 	
+	public abstract String serialize();
+	
+	public abstract void deserialize(final String string);
 	
 }

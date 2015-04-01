@@ -96,5 +96,15 @@ public class KFile extends AbstractKObject<File> {
 	public String toString() {
 		return getPath();
 	}
+
+	@Override
+	public String serialize() {
+		return getPath();
+	}
+
+	@Override
+	public void deserialize(String string) {
+		setValue(string);
+	}
 	
 }

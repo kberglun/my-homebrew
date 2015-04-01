@@ -72,6 +72,10 @@ public class Setting {
 		}
 		
 		public Setting build(){
+			if (epguidesUrl.isEmpty()) {
+				final String url="http://epguides.com/"+seriesName.toLowerCase().replace("the ", "")+"/";
+				epguidesUrl.setValue(url);
+			}
 			return new Setting(id,filePrefixes,seriesName,epguidesUrl,podnapisiUrl,isActive);
 		}
 	}
